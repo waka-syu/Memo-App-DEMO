@@ -1,29 +1,29 @@
 <main class="main">
   <div class="inner">
     <%# ログインしているときは以下を表示する %>
-    <%# <% if user_signed_in? %>
+    <% if user_signed_in? %>
       <div class="greeting">
         ようこそ、
-        <%= link_to current_user.name, user_path(current_user.id), class: :greeting__link %>
+        <%= link_to current_user.name, "#", class: :greeting__link %>
       </div>
-    <%# <% end %> 
+    <% end %> 
     <%# // ログインしているときは上記を表示する %>
     <div class="wrapper">
       <h1 class="main-title">
         メモを投稿しよう
       </h1>
-      <%= link_to "New Memo", new_memo_path, class: :memo__btn %>
+      <%= link_to "New Memo", "#", class: :memo__btn %>
     </div>
     <h2 class="memos">・メモ投稿一覧・</h2>
     <ul class="memo-lists">
-      <% @memos.each do |memo| %>
-      <li class='list'>
+      <%# <% @memos.each do |memo| %> 
+      <%# <li class='list'>
         <div class="memo">
           <%= link_to memo.title, memo_path(memo.id), class: :memo__title%>
-          <%= link_to "by メモの投稿者名", root_path, class: :memo__user %>
-        </div>
-      </li>
-      <% end %>
+          <%# <%= link_to "by メモの投稿者名", root_path, class: :memo__user %>
+        <%# </div>
+      </li> %> 
+      <%# <% end %> 
     </ul>
   </div>
 </main>

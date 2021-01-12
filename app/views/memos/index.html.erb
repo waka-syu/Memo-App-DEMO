@@ -16,14 +16,14 @@
     </div>
     <h2 class="memos">・メモ投稿一覧・</h2>
     <ul class="memo-lists">
-      <%# <% @memos.each do |memo| %> 
-      <%# <li class='list'>
+      <% @memos.each do |memo| %> 
+      <li class='list'>
         <div class="memo">
           <%= link_to memo.title, memo_path(memo.id), class: :memo__title%>
-          <%# <%= link_to "by メモの投稿者名", root_path, class: :memo__user %>
-        <%# </div>
-      </li> %> 
-      <%# <% end %> 
+          <%= link_to "by #{memo.user.name}", root_path, class: :memo__user %>
+        </div>
+      </li> 
+      <% end %> 
     </ul>
   </div>
 </main>

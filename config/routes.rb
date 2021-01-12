@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get 'memos/index'
   root to: "memos#index"
   resources :memos, except: :index
+  post 'memos/attach', to: 'memos#attach'
 end

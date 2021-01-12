@@ -166,14 +166,21 @@
   color: #999;
   text-decoration: none;
   user-select: none;
-  border: 1px #999 solid;
+  border: 1px #66ff66 solid;
   border-radius: 3px;
   transition: 0.4s ease;
   margin: 0 4px;
 }
-.memo_btn:hover{
+.memos_btn:hover{
   color: #fff;
   background: #999;
+}
+
+.detail__content {
+  text-align: center;
+  border: 1px solid;
+  margin: 10px;
+  padding: 10px;
 }
 
 .prototype__comments{

@@ -14,6 +14,7 @@
 
 - has_many :memos
 - has_many :comments
+- has_many :favorites
 
 ## memos テーブル
 
@@ -28,12 +29,25 @@
 
 - belongs_to :user
 - has_many :comments
+- has_many :favorites
 
 ## comments テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | content     | string     | null: false                    |
+| user        | references | null: false, foreign_key: true |
+| memo        | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :memo
+
+## favorites テーブル
+
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
 | memo        | references | null: false, foreign_key: true |
 

@@ -1,0 +1,22 @@
+<%= javascript_pack_tag 'memo' %>
+
+<%= form_with model: @memo, url: memos_path, local: true do |f|%>
+  <div class="field">
+    <%= f.label :title, "メモのタイトル" %><br />
+    <%= f.text_field :title, class: :form__title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content, "メモ内容" %><br />
+    <%= f.text_area :content, class: :form__text, id:"editor" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hoge, "ジャンル" %><br />
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box", id:"memo-genre"}) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>

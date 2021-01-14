@@ -18,8 +18,20 @@
             </p>
           </div>
         </div>
-        <div class='star-btn' id="favorite_<%= memo.id %>">
-          <%= render "favorites/favorite", memo: memo %>
+      </li> 
+    <% end %>
+  </ul>
+  <p><%= @name %>さんのお気に入り一覧</p>
+  <ul class="memo-lists">
+    <% @favorites.each do |favorite| %>
+      <li class='list'>
+        <div class="memo__body">
+          <div class="memo__detail">
+            <p class="detail__title">メモタイトル</p>
+            <p class="detail__memo-title">
+              <%= link_to favorite.title, memo_path(favorite.id), class: :memo__title%>
+            </p>
+          </div>
         </div>
       </li> 
     <% end %>

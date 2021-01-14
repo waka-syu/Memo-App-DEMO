@@ -10,4 +10,5 @@ class FavoritesController < ApplicationController
     favorite = Favorite.find_by(memo_id: params[:memo_id], user_id: current_user.id)
     favorite.destroy
   end
+
 end

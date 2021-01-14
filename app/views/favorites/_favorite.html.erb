@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <% if !Favorite.exists?(user_id: current_user.id, memo_id: memo.id) %>
+    <p><span>お気に入り登録: </span><%=link_to memo.favorites.count, memo_favorites_path(memo.id), method: :post, remote: true, class: "favorite-btn" %></p>
+  <% else %>
+    <p><span>お気に入り解除: </span><%=link_to memo.favorites.count, memo_favorite_path(memo_id: memo.id, id: memo.favorites[0].id), method: :delete, remote: true, class: "favorite-btn" %></p>
+  <% end %>
+<% else %>
+  <p><span>お気に入り数: </span><%= memo.favorites.count %></p>
+<% end %>

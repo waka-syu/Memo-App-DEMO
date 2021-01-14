@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show, :edit, :update] do
-    get :favorites, on: :collection
-  end
+  resources :users, only: [:show, :edit, :update]
 
   get 'memos/index'
   root to: "memos#index"

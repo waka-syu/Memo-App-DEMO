@@ -18,6 +18,9 @@
             </p>
           </div>
         </div>
+        <div class='star-btn' id="favorite_<%= memo.id %>">
+          <%= render "favorites/favorite", memo: memo %>
+        </div>
       </li> 
     <% end %>
   </ul>

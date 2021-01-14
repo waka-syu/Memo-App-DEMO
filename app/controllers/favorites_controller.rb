@@ -1,11 +1,13 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user!
   def create
-    @memo = Memp.find(params[:memo_id])
-    if @memo.user_id != current_user.id
-      @favorite = Favorite.create(user_id: current_user.id, memo_id: @memo.id)
-    end
+    @memo = Memo.find(params[:memo_id])
+    favorite = current_user.favorites.build(memo_id: params[:memo_id])
+    favorite.save
   end
 
-
+  def destroy
+    @memo = Memo.find(params[:memo_id])
+    favorite = Favorite.find_by(memo_id: params[:memo_id], user_id: current_user.id)
+    favorite.destroy
+  end
 end

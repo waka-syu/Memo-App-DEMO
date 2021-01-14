@@ -25,6 +25,10 @@ class MemosController < ApplicationController
     render json: { filename: url_for(attachment.image)}
   end
 
+  def favorites
+    @memos = current_user.favorite_memos.includes(:user)
+  end
+
   private
 
   def memo_params

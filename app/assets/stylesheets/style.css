@@ -782,7 +782,6 @@ header.header .user_nav span {
   top: 5px;
   display: block;
   float: left;
-  margin-left: 30px;
   width: 150px;
   height: 50px;
   font-size: 1em;
@@ -831,3 +830,5 @@ footer {
 footer p {
   text-align: center;
 }
+
+.contents.row

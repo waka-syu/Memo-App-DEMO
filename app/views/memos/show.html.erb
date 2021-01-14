@@ -20,6 +20,9 @@
             <%= @memo.content %>
           </p>
         </div>
+        <div class='star-btn' id="favorite_<%= @memo.id %>">
+          <%= render partial: "favorites/favorite", locals: { memo: @memo } %>
+        </div>
       </div>
       <div class="prototype__comments">
         <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>

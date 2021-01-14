@@ -1,0 +1,39 @@
+<div class="contents row">
+  <p><%= @name %>さんの投稿一覧</p>
+  <ul class="memo-lists">
+    <% @memos.each do |memo| %>
+      <li class='list'>
+        <div class="memo__body">
+          <div class="memo__detail">
+            <p class="detail__title">メモタイトル</p>
+            <p class="detail__memo-title">
+              <%= link_to memo.title, memo_path(memo.id), class: :memo__title%>
+            </p>
+          </div>
+
+          <div class="memo__detail">
+            <p class="detail__title">メモ内容</p>
+            <p class="detail__content">
+              <%= memo.content %>
+            </p>
+          </div>
+        </div>
+      </li> 
+    <% end %>
+  </ul>
+  <p><%= @name %>さんのお気に入り一覧</p>
+  <ul class="memo-lists">
+    <% @favorites.each do |favorite| %>
+      <li class='list'>
+        <div class="memo__body">
+          <div class="memo__detail">
+            <p class="detail__title">メモタイトル</p>
+            <p class="detail__memo-title">
+              <%= link_to favorite.title, memo_path(favorite.id), class: :memo__title%>
+            </p>
+          </div>
+        </div>
+      </li> 
+    <% end %>
+  </ul>
+</div>

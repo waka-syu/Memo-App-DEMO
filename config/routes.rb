@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   resources :memos, except: :index do
     resources :favorites, only: [:create, :destroy]
+    resources :comments, only: :create
   end
 
   post 'memos/attach', to: 'memos#attach'

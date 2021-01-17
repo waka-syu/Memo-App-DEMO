@@ -3,6 +3,8 @@ class Memo < ApplicationRecord
   belongs_to :user
   belongs_to :genre
 
+  has_many :comments
+
   has_many :favorites, dependent: :destroy
 
   with_options presence: true do

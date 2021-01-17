@@ -27,10 +27,10 @@
       <div class="prototype__comments">
         <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
         <% if user_signed_in? %>
-          <%= form_with url: "#", local: true do |f| %> 
+          <%= form_with model: @comment, url: memo_comments_path(@memo.id), local: true do |f| %> 
             <div class="field">
-              <%= f.label :text, "コメント" %><br /> 
-              <%= f.text_field :text %> 
+              <%= f.label :content, "コメント" %><br /> 
+              <%= f.text_field :content %> 
             </div>
             <div class="actions"> 
               <%= f.submit "送信する", class: :form__btn  %> 
@@ -39,16 +39,14 @@
         <% end %>
         <%# // ログインしているユーザーには上記を表示する %>
         <ul class="comments_lists">
-          <%# 投稿に紐づくコメントを一覧する処理を記述する %>
-          <%# <% if @comments %>
-            <%# <% @comments.each do |comment| %>
-              <%# <li class="comments_list">
-                <%= comment.text %>
-                <%# <%= link_to comment.user.name, user_path(comment.user.id), class: :comment_user %> 
-              <%# </li>  %>
-            <%# <% end %>  
-          <%# <% end %>  
-          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
+          <% if @comments %>
+            <% @comments.each do |comment| %>
+              <li class="comments_list">
+                <%= comment.content %>
+                <%= link_to comment.user.name, user_path(comment.user.id), class: :comment_user %> 
+              </li> 
+            <% end %>  
+          <% end %>  
         </ul>
       </div>
     </div>

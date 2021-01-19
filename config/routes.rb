@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   end
 
   post 'memos/attach', to: 'memos#attach'
+
+  get '/memo/genre', to: "memos#genre"
 end

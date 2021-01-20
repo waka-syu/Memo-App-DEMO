@@ -763,7 +763,6 @@ header.header div.header__bar.row h1.grid-6 a {
 
 header.header div.header__bar.row div.grid-6 {
   float: right;
-  text-align: right;
   display: flex;
 }
 
@@ -775,6 +774,7 @@ header.header div.header__bar.row div.grid-6 a.post {
 header.header .user_nav {
   position: relative;
   display: flex;
+  justify-content: space-between;
   right: 0;
 }
 
@@ -783,7 +783,7 @@ header.header .user_nav span {
   display: block;
   float: left;
   width: 150px;
-  height: 50px;
+  height: 40px;
   font-size: 1em;
   cursor: pointer;
   position: relative;
@@ -821,6 +821,11 @@ header.header .user_nav ul li a {
   border-bottom: 1px solid #d8d8d8;
 }
 
+.search-form {
+  display: flex;
+  margin-bottom: 5px;
+}
+
 footer {
   margin: 30px auto;
   padding: 10px;
@@ -830,5 +835,3 @@ footer {
 footer p {
   text-align: center;
 }
-
-.contents.row

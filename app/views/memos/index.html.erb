@@ -20,7 +20,7 @@
       <li class='list'>
         <div class="memo">
           <%= link_to memo.title, memo_path(memo.id), class: :memo__title%>
-          <%= link_to "by #{memo.user.name}", root_path, class: :memo__user %>
+          <%= link_to "by #{memo.user.name}", user_path(memo.user.id), class: :memo__user %>
         </div>
       </li> 
       <% end %> 

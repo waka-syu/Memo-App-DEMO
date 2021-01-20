@@ -23,7 +23,10 @@
                 </li>
               </ul>
             </span>
-            <%= link_to "お気に入り", "#", class: "post" %>
+            <%= search_form_for @q, url: memo_genre_path, class: "search-form" do |f| %>
+              <%= f.collection_select :genre_id_eq, Genre.where.not(id: 0), :id, :name, include_blank: "ジャンル検索" %>
+              <%= f.submit '検索' %>
+            <% end %>
           </div>
         <% else %>
           <div class="grid-6">

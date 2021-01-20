@@ -1,4 +1,5 @@
 class MemosController < ApplicationController
+  before_action :search_genre_memo
   def index
     @memos = Memo.order("created_at DESC").includes(:user)
   end
@@ -31,7 +32,17 @@ class MemosController < ApplicationController
     @memos = current_user.favorite_memos.includes(:user)
   end
 
+  def genre
+    @memos = @q.result
+    genre_id = params[:q][:genre_id_eq]
+    @genre = Genre.find_by(id: genre_id)
+  end
+
   private
+
+  def search_genre_memo
+    @q = Memo.ransack(params[:q])
+  end
 
   def memo_params
     params.require(:memo).permit(:title, :content, :genre_id).merge(user_id: current_user.id)

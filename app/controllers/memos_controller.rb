@@ -1,5 +1,8 @@
 class MemosController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :search_genre_memo
+  before_action :set_memo, only: [:show, :edit, :update, :destroy]
+
   def index
     @memos = Memo.order("created_at DESC").includes(:user)
   end
@@ -21,6 +24,27 @@ class MemosController < ApplicationController
     @memo = Memo.find(params[:id])
     @comment = Comment.new
     @comments = @memo.comments.includes(:user)
+  end
+
+  def edit
+    unless current_user.id == @memo.user.id
+      redirect_to action: :index
+    end
+  end
+
+  def update
+    if @memo.update(memo_params)
+      redirect_to memo_path(@memo.id)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if current_user.id == @memo.user.id
+      @memo.destroy
+    end
+    redirect_to root_path
   end
 
   def attach
@@ -46,5 +70,9 @@ class MemosController < ApplicationController
 
   def memo_params
     params.require(:memo).permit(:title, :content, :genre_id).merge(user_id: current_user.id)
+  end
+
+  def set_memo
+    @memo = Memo.find(params[:id])
   end
 end

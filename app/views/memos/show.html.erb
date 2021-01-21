@@ -8,8 +8,8 @@
       <%# メモの投稿者とログインしているユーザーが同じであれば以下を表示する %>
       <% if user_signed_in? && current_user.id == @memo.user.id %>
         <div class="memo__manage">
-          <%= link_to "編集する", "#", class: :memos__btn %>
-          <%= link_to "削除する", "#", method: :delete, class: :memos__btn %>
+          <%= link_to "編集する", edit_memo_path(@memo.id), class: :memos__btn %>
+          <%= link_to "削除する", memo_path(@memo.id), method: :delete, class: :memos__btn %>
         </div>
       <% end %>
       <%# // メモの投稿者とログインしているユーザーが同じであれば上記を表示する %>
